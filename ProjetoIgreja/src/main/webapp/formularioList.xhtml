@@ -1,0 +1,215 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<p:commandButton title="#{messages['button.new']}" icon="ui-icon-document" action="#{usuarioList.getNextView}"
+						actionListener="#{usuarioList.clear()}" ajax="false" />
+
+					<p:commandButton title="#{messages['button.delete']}" icon="ui-icon-trash" onclick="confirmation.show()"
+						type="button" immediate="true" ajax="false" />
+
+					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
+						header="#{messages['label.dialog.alert']}!" severity="alert" widgetVar="confirmation">
+
+						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{usuarioList.deleteSelection()}"
+							actionListener="#{usuarioList.clear}" />
+						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+					</p:confirmDialog>
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:dataTable id="list" var="bean" value="#{usuarioList.resultList}">
+				<f:facet name="header">Lista de Usuários</f:facet>
+				<p:column style="width:5%;">
+					<h:selectBooleanCheckbox value="#{usuarioList.selection[bean.id]}" />
+				</p:column>
+				
+				<p:column style="width:5%;" sortBy="#{bean.id}">
+					<f:facet name="header">Id</f:facet>
+					<h:outputText value="#{bean.id}" />
+				</p:column>
+				
+				<p:column sortBy="#{bean.nome}">
+					<f:facet name="header">Nome</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.nome}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.nomePai}">
+					<f:facet name="header">Nome do Pai</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.nomePai}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.nomeMae}">
+					<f:facet name="header">Nome da Mãe</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.nomeMae}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.dataNascimento}">
+					<f:facet name="header">Data de Nascimento</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.dataNascimento}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.dataBatismo}">
+					<f:facet name="header">Data de Batismo</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.dataBatismo}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.sexo}">
+					<f:facet name="header">Sexo</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.sexo}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.estadoCivil}">
+					<f:facet name="header">Estado Civil</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.estadoCivil}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.conjugue}">
+					<f:facet name="header">Nome do Conjuge</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.conjugue}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.quantidadeFilho}">
+					<f:facet name="header">Quantidade de filhos</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.quantidadeFilho}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.RG}">
+					<f:facet name="header">RG</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.RG}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.CPF}">
+					<f:facet name="header">CPF</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.CPF}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.endereco.rua}">
+					<f:facet name="header">Rua</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.endereco.rua}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.endereco.numero}">
+					<f:facet name="header">Número</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.endereco.numero}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.endereco.bairro}">
+					<f:facet name="header">Bairro</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.endereco.bairro}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.endereco.cidade}">
+					<f:facet name="header">Cidade</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.endereco.cidade}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.endereco.estado}">
+					<f:facet name="header">Estado</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.endereco.estado}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.endereco.CEP}">
+					<f:facet name="header">CEP</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.CPF}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.status}">
+					<f:facet name="header">Status</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.status}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.nivel}">
+					<f:facet name="header">Nivel</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.nivel}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.fone1}">
+					<f:facet name="header">Telefone Principal</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.fone1}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.fone2}">
+					<f:facet name="header">Telefone Secundario</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.fone2}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+				<p:column sortBy="#{bean.email}">
+					<f:facet name="header">Email</f:facet>
+					<h:commandLink action="#{usuarioList.getNextView}" actionListener="#{usuarioList.clear}">
+						<h:outputText value="#{bean.email}" />
+						<f:param name="id" value="#{bean.id}" />
+					</h:commandLink>
+				</p:column>
+				
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

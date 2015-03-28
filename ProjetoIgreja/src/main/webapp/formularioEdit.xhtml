@@ -1,0 +1,206 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form prependId="false">
+		<br/>
+			<p:fieldset legend="Dados Pessoais">
+				<h:panelGrid id="dadosPessoais" columns="3">
+
+					<h:outputLabel value="Nome Completo* " for="nome" styleClass="text-input" />
+					<p:inputText id="nome" value="#{usuarioEdit.bean.nome}"
+						title="Nome" required="true" requiredMessage="O campo nome é necessário">
+					</p:inputText>	
+					<p:message for="nome" />
+
+					<h:outputLabel value="Nome do Pai: " for="nomePai" styleClass="text-input" />
+					<p:inputText id="nomePai" value="#{usuarioEdit.bean.nomePai}" title="Nome do Pai" required="true"
+						 requiredMessage="O campor Nome do Pai é nessário">
+					</p:inputText>	 
+					<p:message for="nomePai" />
+					
+					<h:outputLabel value="Nome da Mãe: " for="nomeMae" styleClass="text-input" />
+					<p:inputText id="nomeMae" value="#{usuarioEdit.bean.nomeMae}" title="Nome da Mãe" required="true"
+						 requiredMessage="O campor Nome da Mãe é nessário">
+					</p:inputText>	 
+					<p:message for="nomeMae" />
+					
+					<h:outputLabel value="Data de Nascimento: " for="dataNascimento" styleClass="text-input" />
+					<p:calendar id="dataNascimento" value="#{usuarioEdit.bean.dataNascimento}" title="Data de Nascimento" required="true"
+						requiredMessage="O campor Data de Nascimento é necessário" pattern="dd/MM/yyyy" navigator="true"
+						mask="true" locale="br" yearRange="-110:">
+					</p:calendar>	
+					<p:message for="dataNascimento"/>
+					
+					<h:outputLabel value="Data de Batismo: " for="dataBatismo" styleClass="text-input" />
+					<p:calendar id="dataBatismo" value="#{usuarioEdit.bean.dataBatismo}" title="Data de Batismo" required="false"
+						requiredMessage="O campor Data de Batismo é necessário" pattern="dd/MM/yyyy" navigator="true"
+						mask="true" locale="br" yearRange="-110:">
+					</p:calendar>	
+					<p:message for="dataBatismo"/>
+					
+					<h:outputLabel value="Sexo" for="sexo" styleClass="text-input" />
+					<p:selectOneRadio id="sexo" value="#{usuarioEdit.bean.sexo}" required="true" requiredMessage="O campo Sexo é necessário">
+						<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+						<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+					</p:selectOneRadio>
+					<p:message for="sexo"/>
+					
+					<h:outputLabel value="Estado Civil" for="estadoCivil" styleClass="text-input"/>
+					<p:selectOneMenu id="estadoCivil" value="#{usuarioEdit.bean.estadoCivil}" required="true" requiredMessage="O campo Estado Civil é necessário">
+						<f:selectItem itemLabel="" itemValue=""/>
+						<f:selectItem itemLabel="Solteiro(a)" itemValue="Solteiro(a)"/>
+						<f:selectItem itemLabel="Casado(a)" itemValue="Casado(a)"/>
+						<f:selectItem itemLabel="Divorciado(a)" itemValue="Divorciado(a)"/>
+						<f:selectItem itemLabel="Viúvo(a)" itemValue="Viúvo(a)"/>
+					</p:selectOneMenu>
+					<p:message for="estadoCivil"/>
+					
+					<h:outputLabel value="Cônjuge" for="conjuge" styleClass="text-input"/>
+					<p:inputText id="conjuge" value="#{usuarioEdit.bean.conjugue}" required="true" requiredMessage="O campo Cônjuge é necessário" />
+					<p:message for="conjuge"/>
+					
+					
+					<h:outputLabel value="Quantidade de Filhos" for="quantidadeFilho" styleClass="text-input"/>
+					<p:inputText id="quantidadeFilho" value="#{usuarioEdit.bean.quantidadeFilho}" required="true" requiredMessage="O campo Quantidade de Filhos é necessário" maxlength="2"/>
+					<p:message for="quantidadeFilho"/>
+					
+					<h:outputLabel value="RG" for="rg" styleClass="text-input"/>
+					<p:inputText id="rg" value="#{usuarioEdit.bean.RG}" required="false" requiredMessage="O campo RG é necessário" />
+					<p:message for="rg"/>
+					
+					<h:outputLabel value="CPF" for="cpf" styleClass="text-input"/>
+					<p:inputText id="cpf" value="#{usuarioEdit.bean.CPF}" required="false" requiredMessage="O campo CPF é necessário" type=""></p:inputText>
+					<p:message for="cpf"/>
+						
+				</h:panelGrid>
+			</p:fieldset>
+			<br/>
+			<p:fieldset legend="Dados de Endereço">
+				<h:panelGrid id="dadosEndereco" columns="3">
+				
+					<h:outputLabel value="Rua" for="rua" styleClass="text-input"/>
+					<p:inputText id="rua" value="#{usuarioEdit.bean.endereco.rua}" required="true" requiredMessage="O campo Rua é necessário"/>
+					<p:message for="rua"/>
+					
+					<h:outputLabel value="Número" for="numero" styleClass="text-input"/>
+					<p:inputText id="numero" value="#{usuarioEdit.bean.endereco.numero}" required="true" requiredMessage="O campo Número é necessário"/>
+					<p:message for="numero"/>
+					
+					<h:outputLabel value="Bairro" for="bairro" styleClass="text-input"/>
+					<p:inputText id="bairro" value="#{usuarioEdit.bean.endereco.bairro}" required="true" requiredMessage="O campo Bairro é necessário"/>
+					<p:message for="bairro"/>
+					
+					<h:outputLabel value="Cidade" for="cidade" styleClass="text-input"/>
+					<p:inputText id="cidade" value="#{usuarioEdit.bean.endereco.cidade}" required="true" requiredMessage="O campo Cidade é necessário"/>
+					<p:message for="cidade"/>
+					
+					<h:outputLabel value="Estado" for="estado" styleClass="text-input"/>
+					<p:selectOneMenu id="estado" value="#{usuarioEdit.bean.endereco.estado}" required="true" requiredMessage="O campo Rua é necessário"
+						filter="true" >
+							<f:selectItem itemLabel="" itemValue=""/>
+							<f:selectItem itemLabel="Acre" itemValue="Acre"/>
+							<f:selectItem itemLabel="Alagoas" itemValue="Alagoas"/>
+							<f:selectItem itemLabel="Amazonas" itemValue="Amazonas"/>
+							<f:selectItem itemLabel="Amapá" itemValue="Amapá"/>
+							<f:selectItem itemLabel="Bahia" itemValue="Bahia"/>
+							<f:selectItem itemLabel="Ceára" itemValue="Ceará"/>
+							<f:selectItem itemLabel="Distrito Federal" itemValue="Distrito Federal"/>
+							<f:selectItem itemLabel="Espirito Santo" itemValue="Espirito Santo"/>
+							<f:selectItem itemLabel="Goias" itemValue="Goiás"/>
+							<f:selectItem itemLabel="Maranhão" itemValue="Maranhão"/>
+							<f:selectItem itemLabel="Mato Grosso" itemValue="Mato Grosso"/>
+							<f:selectItem itemLabel="Mato Grosso do Sul" itemValue="Mato Grosso do Sul"/>
+							<f:selectItem itemLabel="Minas Geraís" itemValue="Minas Geraís"/>
+							<f:selectItem itemLabel="Pará" itemValue="Pará"/>
+							<f:selectItem itemLabel="Paraíba" itemValue="Paraíba"/>
+							<f:selectItem itemLabel="Paraná" itemValue="Paraná"/>
+							<f:selectItem itemLabel="Pernambuco" itemValue="Pernambuco"/>
+							<f:selectItem itemLabel="Piauí" itemValue="Piauí"/>
+							<f:selectItem itemLabel="Rio de Janeiro" itemValue="Rio de Janeiro"/>
+							<f:selectItem itemLabel="" itemValue="Rio Grande do Norte"/>
+							<f:selectItem itemLabel="Rondônia" itemValue="Rondônia"/>
+							<f:selectItem itemLabel="Rio Grande do Sul" itemValue="Rio Grande do Sul"/>
+							<f:selectItem itemLabel="Roraima" itemValue="Roraima"/>
+							<f:selectItem itemLabel="Santa Catarina" itemValue="Santa Catarina"/>
+							<f:selectItem itemLabel="Sergipe" itemValue="Sergipe"/>
+							<f:selectItem itemLabel="São Paulo" itemValue="São Paulo"/>
+							<f:selectItem itemLabel="Tocantins" itemValue="Tocantins"/>
+					</p:selectOneMenu>
+					<p:message for="rua"/>
+					
+					<h:outputLabel value="CEP" for="cep" styleClass="text-input"/>
+					<p:inputMask id="cep" value="#{usuarioEdit.bean.endereco.CEP}" required="true" requiredMessage="O campo CEP é necerssário"
+						mask="999.999.999-99" >
+					</p:inputMask>
+					<p:message for="cep"/>
+			
+				</h:panelGrid>
+			</p:fieldset>
+			<br/>
+			<p:fieldset legend="Dados do Perfil">
+				<h:panelGrid id="dadosPerfil" columns="3">
+				
+					<h:outputLabel value="Status" for="status" styleClass="text-input"/>
+					<p:selectOneMenu id="status" value="#{usuarioEdit.bean.status}" required="true" requiredMessage="O campo Status é necessário">
+						<f:selectItem itemLabel="" itemValue=""/>
+						<f:selectItem itemLabel="Ativo(a)" itemValue="Ativo(a)"/>
+						<f:selectItem itemLabel="Afastado(a)" itemValue="Afastado(a)"/>
+						<f:selectItem itemLabel="Em Diciplina" itemValue="Em Diciplina"/>
+						<f:selectItem itemLabel="Falecido" itemValue="Falecido"/>						
+					</p:selectOneMenu>
+					<p:message for="status"/>
+					
+					<h:outputLabel value="Nível" for="nivel" styleClass="text-input"/>
+					<p:selectOneMenu id="nivel" value="#{usuarioEdit.bean.nivel}" required="true" requiredMessage="O campo Nível é necessário">
+						<f:selectItem itemLabel="" itemValue=""/>
+						<f:selectItem itemLabel="Congregado" itemValue="Congregado"/>
+						<f:selectItem itemLabel="Membro" itemValue="Membro"/>
+						<f:selectItem itemLabel="Diacono(a)" itemValue="Diacono(a)"/>
+						<f:selectItem itemLabel="Pastor" itemValue="Pastor"/>
+					</p:selectOneMenu>
+					<p:message for="status"/>
+					
+				</h:panelGrid>
+			</p:fieldset>
+			<br/>
+			<p:fieldset legend="Dados de Contato">
+				<h:panelGrid id="dadosContato" columns="3">
+				
+					<h:outputLabel value="Telefone Principal" for="fone1" styleClass="text-input"/>
+					<p:inputMask mask="(99) 9999-9999" id="fone1" value="#{usuarioEdit.bean.fone1}" required="true" 
+						requiredMessage="O campo Telefone Principal é necessário">
+					</p:inputMask>
+					<p:message for="fone1"></p:message>
+					
+					<h:outputLabel value="Telefone Secundario" for="fone2" styleClass="text-input"/>
+					<p:inputMask mask="(99) 9999-9999" id="fone2" value="#{usuarioEdit.bean.fone2}"/>
+					<p:message for="fone2"/>
+					
+					<h:outputLabel value="E-mail" for="email" styleClass="text-input"/>
+					<p:inputText id="email" value="#{usuarioEdit.bean.email}" required="true" requiredMessage="O campo E-mail é necessario" type="email"/>
+					<p:message for="email"/>
+					
+				</h:panelGrid>
+			</p:fieldset>
+			<br/>
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<p:commandButton value="#{messages['button.save']}" action="#{usuarioEdit.insert}"
+						rendered="#{!usuarioEdit.updateMode}" ajax="false" />
+					<p:commandButton value="#{messages['button.save']}" action="#{usuarioEdit.update}"
+						rendered="#{usuarioEdit.updateMode}" ajax="false" />
+					<p:commandButton value="#{messages['button.delete']}" onclick="confirmation.show()"
+						rendered="#{usuarioEdit.updateMode}" type="button" immediate="true" ajax="false" />
+					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
+						header="#{messages['label.dialog.delete']}" severity="alert" widgetVar="confirmation">
+						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{usuarioEdit.delete}" immediate="true"
+							ajax="false" />
+						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+					</p:confirmDialog>
+				</p:toolbarGroup>
+			</p:toolbar>
+		</h:form>
+	</ui:define>
+</ui:composition>
