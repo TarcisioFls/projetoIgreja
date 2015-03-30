@@ -14,22 +14,22 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import org.demoiselle.ProjetoIgreja.business.BookmarkBC;
 import org.demoiselle.ProjetoIgreja.domain.Bookmark;
 
-@ViewController
+/*@ViewController
 @NextView("/bookmark_edit.xhtml")
-@PreviousView("/bookmark_list.xhtml")
+@PreviousView("/bookmark_list.xhtml")*/
 public class BookmarkListMB extends AbstractListPageBean<Bookmark, Long> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
+//	@Inject
 	private BookmarkBC bc;
 
-	@Override
+//	@Override
 	protected List<Bookmark> handleResultList() {
 		return this.bc.findAll();
 	}
 
-	@Transactional
+//	@Transactional
 	public String deleteSelection() {
 		boolean delete;
 		for (Iterator<Long> iter = getSelection().keySet().iterator(); iter.hasNext();) {

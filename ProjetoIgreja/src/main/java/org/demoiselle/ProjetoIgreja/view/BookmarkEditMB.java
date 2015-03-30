@@ -10,17 +10,17 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import org.demoiselle.ProjetoIgreja.business.BookmarkBC;
 import org.demoiselle.ProjetoIgreja.domain.Bookmark;
 
-@ViewController
-@PreviousView("/bookmark_list.xhtml")
+//@ViewController
+//@PreviousView("/bookmark_list.xhtml")
 public class BookmarkEditMB extends AbstractEditPageBean<Bookmark, Long> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
+//	@Inject
 	private BookmarkBC bookmarkBC;
 
-	@Override
-	@Transactional
+/*	@Override
+	@Transactional*/
 	public String delete() {
 		this.bookmarkBC.delete(getId());
 		return getPreviousView();
@@ -33,14 +33,14 @@ public class BookmarkEditMB extends AbstractEditPageBean<Bookmark, Long> {
 		return getPreviousView();
 	}
 
-	@Override
-	@Transactional
+/*	@Override
+	@Transactional*/
 	public String update() {
 		this.bookmarkBC.update(getBean());
 		return getPreviousView();
 	}
 
-	@Override
+//	@Override
 	protected Bookmark handleLoad(Long id) {
 		return this.bookmarkBC.load(id);
 	}

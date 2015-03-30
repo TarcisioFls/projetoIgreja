@@ -6,15 +6,15 @@
 	<!--
 	-->
 	<persistence-unit name="bookmark-ds" transaction-type="RESOURCE_LOCAL">
-		<non-jta-data-source>java:jboss/datasources/ExampleDS</non-jta-data-source>
-
-		<class>org.demoiselle.ProjetoIgreja.domain.Bookmark</class>
+		<non-jta-data-source>java:jboss/datasources/PostgreSqlDS</non-jta-data-source>
+		<class>org.demoiselle.ProjetoIgreja.domain.Usuario</class>
+		<class>org.demoiselle.ProjetoIgreja.domain.Endereco</class>
 
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 		</properties>
 	</persistence-unit>
 

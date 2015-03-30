@@ -7,7 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -56,8 +57,7 @@ public class Usuario implements Serializable{
 	@Column
 	private String CPF;
 
-	@Column
-	@JoinColumn(name="endereco")
+	@OneToOne
 	private Endereco endereco;
 
 	@Column

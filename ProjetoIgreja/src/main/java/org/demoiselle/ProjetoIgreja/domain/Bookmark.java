@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class Bookmark implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -17,14 +17,14 @@ public class Bookmark implements Serializable {
 	/*
 	 *  If you are using Glassfish then remove the strategy attribute
 	 */
-	@Id
-	@GeneratedValue(strategy = SEQUENCE)
+//	@Id
+//	@GeneratedValue(strategy = SEQUENCE)
 	private Long id;
 	
-	@Column
+//	@Column
 	private String description;
 	
-	@Column
+//	@Column
 	private String link;
 	
 	public Bookmark() {

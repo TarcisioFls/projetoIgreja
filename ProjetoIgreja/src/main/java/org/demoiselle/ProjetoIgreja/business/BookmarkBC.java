@@ -8,13 +8,13 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 import org.demoiselle.ProjetoIgreja.domain.Bookmark;
 import org.demoiselle.ProjetoIgreja.persistence.BookmarkDAO;
 
-@BusinessController
+//@BusinessController
 public class BookmarkBC extends DelegateCrud<Bookmark, Long, BookmarkDAO> {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Startup
-	@Transactional
+//	@Startup
+//	@Transactional
 	public void load() {
 		if (findAll().isEmpty()) {
 			insert(new Bookmark("Demoiselle Portal", "http://www.frameworkdemoiselle.gov.br"));

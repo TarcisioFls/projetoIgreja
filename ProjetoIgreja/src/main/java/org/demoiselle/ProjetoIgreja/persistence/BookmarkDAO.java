@@ -5,7 +5,7 @@ import br.gov.frameworkdemoiselle.template.JPACrud;
 
 import org.demoiselle.ProjetoIgreja.domain.Bookmark;
 
-@PersistenceController
+//@PersistenceController
 public class BookmarkDAO extends JPACrud<Bookmark, Long> {
 	
 	private static final long serialVersionUID = 1L;
