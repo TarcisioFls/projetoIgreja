@@ -1,12 +1,15 @@
 package org.demoiselle.ProjetoIgreja.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -57,7 +60,8 @@ public class Usuario implements Serializable{
 	@Column
 	private String CPF;
 
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="endereco_id")
 	private Endereco endereco;
 
 	@Column
@@ -166,6 +170,9 @@ public class Usuario implements Serializable{
 	}
 
 	public Endereco getEndereco() {
+		if (endereco == null) {
+			endereco = new Endereco();
+		}
 		return endereco;
 	}
 
